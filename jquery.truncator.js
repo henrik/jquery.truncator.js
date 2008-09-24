@@ -40,8 +40,8 @@
     });
   }
 
-  // Note that the "more" link and its wrapping counts towards the max length:
-  // so "more" and a max length of 10 might give "123 (more)"
+  // Note that the " (…more)" bit counts towards the max length – so a max
+  // length of 10 would truncate "1234567890" to "12 (…more)".
   $.fn.truncate.defaults = {
     max_length: 100,
     more: '…more',
