@@ -68,7 +68,11 @@
     if (trailing_whitespace)  // remove initial whitespace if last text
       text = text.replace(/^ /, '');  // node had trailing whitespace.
     trailing_whitespace = !!text.match(/ $/);
-    return text.slice(0, max_length);
+    var text = text.slice(0, max_length);
+    // Ensure HTML entities are encoded
+    // http://debuggable.com/posts/encode-html-entities-with-jquery:480f4dd6-13cc-4ce9-8071-4710cbdd56cb
+    text = $('<div/>').text(text).html();
+    return text;
   }
 
   // Collapses a sequence of whitespace into a single space.
