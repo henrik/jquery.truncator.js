@@ -52,7 +52,7 @@ The available options are:
 
    Defaults to `100`.
    
-   Note that the `" (…more)"` bit counts towards the max length – so a max length of 10 would truncate `1234567890` to `12 (…more)`.
+   Note that the ` (…more)` bit counts towards the max length – so a max length of 10 would truncate `1234567890` to `12 (…more)`.
 
 ## Credits
 
