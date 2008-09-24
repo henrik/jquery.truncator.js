@@ -1,18 +1,20 @@
 # jQuery HTML truncator
 
-[jQuery](http://jquery.com/) (JavaScript) plugin to truncate text with "more"/"less" links.
+[jQuery](http://jquery.com/) (JavaScript) plugin to truncate HTML text with "more"/"less" links.
 
 For example, you might see
 
     Lorem ipsum do (…more)
     
-Clicking "more" shows
+Clicking "…more" shows
 
     Lorem ipsum dolor sit amet. (less)
     
 Clicking "less" goes back to the truncated text.
 
 There is also [a live example](http://henrik.nyh.se/examples/truncator/) (or try the provided `example.html` locally).
+
+## Graceful HTML handling
 
 While there are many JavaScript truncators, this one is unique in handling HTML gracefully. That means you can truncate an element containing paragraphs, links, other markup and HTML entities without strange results.
 
