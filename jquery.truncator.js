@@ -16,20 +16,15 @@
       if (content_length <= opts.max_length)
         return;  // bail early if not overlong
 
-      var actual_max_length = opts.max_length - opts.more.length - 3;  // 3 for " ()"    
+      var actual_max_length = opts.max_length - opts.more.length - 3;  // 3 for " ()"
       var truncated_node = recursivelyTruncate(this, actual_max_length);
-      var full_node = $(this);
+      var full_node = $(this).hide();
 
       truncated_node.insertAfter(full_node);
-      // This is an ugly approximation for getting the last block tag:
-      // we just pick the last <p> or else the container itself.
-      truncated_node.find('p:last').add(truncated_node).eq(0).
-        append(' (<a href="#show more content">'+opts.more+'</a>)');
-
-      full_node.hide();
-      full_node.find('p:last').add(full_node).eq(0).
-        append(' (<a href="#show less content">'+opts.less+'</a>)');
-
+      
+      findNodeForMore(truncated_node).append(' (<a href="#show more content">'+opts.more+'</a>)');
+      findNodeForLess(full_node).append(' (<a href="#show less content">'+opts.less+'</a>)');
+      
       truncated_node.find('a:last').click(function() {
         truncated_node.hide(); full_node.show(); return false;
       });
@@ -81,5 +76,23 @@
   function squeeze(string) {
     return string.replace(/\s+/g, ' ');
   }
+  
+  // Finds the last, innermost block-level element
+  function findNodeForMore(node) {
+    var $node = $(node);
+    var last_child = $node.children(":last");
+    if (!last_child) return node;
+    var display = last_child.css('display');
+    if (!display || display=='inline') return $node;
+    return findNodeForMore(last_child);
+  };
+
+  // Finds the last child if it's a p; otherwise the parent
+  function findNodeForLess(node) {
+    var $node = $(node);
+    var last_child = $node.children(":last");
+    if (last_child && last_child.is('p')) return last_child;
+    return node;
+  };
 
 })(jQuery);
