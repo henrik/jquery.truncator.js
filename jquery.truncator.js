@@ -54,11 +54,13 @@
 
   function truncateNode(node, max_length) {
     var node = $(node);
-    var new_node = node.clone().html("");
+    var new_node = node.clone().empty();
+    var truncatedChild;
     node.contents().each(function() {
       var remaining_length = max_length - new_node.text().length;
       if (remaining_length == 0) return;
-      new_node.append(recursivelyTruncate(this, remaining_length));
+      truncatedChild = recursivelyTruncate(this, remaining_length);
+      if (truncatedChild) new_node.append(truncatedChild);
     });
     return new_node;
   }
