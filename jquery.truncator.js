@@ -58,7 +58,7 @@
     var truncatedChild;
     node.contents().each(function() {
       var remaining_length = max_length - new_node.text().length;
-      if (remaining_length == 0) return;
+      if (remaining_length == 0) return;  // breaks the loop
       truncatedChild = recursivelyTruncate(this, remaining_length);
       if (truncatedChild) new_node.append(truncatedChild);
     });
