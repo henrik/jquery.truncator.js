@@ -53,7 +53,13 @@
     var truncatedChild;
     node.contents().each(function() {
       var remaining_length = max_length - new_node.text().length;
-      if (remaining_length == 0) return;  // breaks the loop
+      if (remaining_length == 0) {
+        var $this = $(this);
+        if ($this.prev('td, th').length) {
+          $this.add($this.nextAll('td, th')).clone().html('…').appendTo(new_node);
+        }
+        return;  // breaks the loop
+      }
       truncatedChild = recursivelyTruncate(this, remaining_length);
       if (truncatedChild) new_node.append(truncatedChild);
     });
@@ -77,14 +83,12 @@
     return string.replace(/\s+/g, ' ');
   }
   
-  // Finds the last, innermost block-level element
+  // Finds the last, innermost p or div; otherwise the parent
   function findNodeForMore(node) {
     var $node = $(node);
     var last_child = $node.children(":last");
-    if (!last_child) return node;
-    var display = last_child.css('display');
-    if (!display || display=='inline') return $node;
-    return findNodeForMore(last_child);
+    if (last_child.is('p,div')) return findNodeForMore(last_child);
+    return node;
   };
 
   // Finds the last child if it's a p; otherwise the parent
