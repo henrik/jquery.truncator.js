@@ -22,8 +22,8 @@
 
       truncated_node.insertAfter(full_node);
       
-      findNodeForMore(truncated_node).append(' (<a href="#show more content" class="'+opts.css_more_class+'">'+opts.more+'</a>)');
-      findNodeForLess(full_node).append(' (<a href="#show less content" class="'+opts.css_less_class+'">'+opts.less+'</a>)');
+      findNodeForMore(truncated_node).append(' (<a href="#more" class="'+opts.css_more_class+'">'+opts.more+'</a>)');
+      findNodeForLess(full_node).append(' (<a href="#less" class="'+opts.css_less_class+'">'+opts.less+'</a>)');
       
       truncated_node.find('a:last').click(function() {
         truncated_node.hide(); full_node.show(); return false;
