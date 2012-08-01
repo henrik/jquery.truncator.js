@@ -15,14 +15,16 @@
       var content_length = $.trim(squeeze($(this).text())).length;
       if (content_length <= opts.max_length)
         return;  // bail early if not overlong
+      
+      // include more text, link prefix, and link suffix in max length
+      var actual_max_length = opts.max_length - opts.more.length - opts.link_prefix.length - opts.link_suffix.length;
 
-      var actual_max_length = opts.max_length - opts.more.length - 3;  // 3 for " ()"
       var truncated_node = recursivelyTruncate(this, actual_max_length);
       var full_node = $(this).hide();
 
       truncated_node.insertAfter(full_node);
 
-      findNodeForMore(truncated_node).append(opts.link_prefix+'<a href="#more" class="'+opts.css_more_class+'">'+opts.more+'</a>)'+opts.link_suffix);
+      findNodeForMore(truncated_node).append(opts.link_prefix+'<a href="#more" class="'+opts.css_more_class+'">'+opts.more+'</a>'+opts.link_suffix);
       findNodeForLess(full_node).append(opts.link_prefix+'<a href="#less" class="'+opts.css_less_class+'">'+opts.less+'</a>'+opts.link_suffix);
 
       truncated_node.find('a:last').click(function() {
