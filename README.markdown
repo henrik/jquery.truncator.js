@@ -54,6 +54,10 @@ The available options are:
    
    Note that the ` (…more)` bit counts towards the max length – so a max length of 10 would truncate `1234567890` to `12 (…more)`.
 
+## Customizations in this Fork
+
+Removed extra ")" that is appended to more text. Included link prefix and suffix in max length calculation (before, was only including more text).
+   
 ## Credits and license
 
 By [Henrik Nyh](http://henrik.nyh.se/) under the MIT license:
