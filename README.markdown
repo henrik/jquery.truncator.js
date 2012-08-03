@@ -5,11 +5,11 @@
 For example, you might see
 
     Lorem ipsum do (…more)
-    
+
 Clicking "…more" shows
 
     Lorem ipsum dolor sit amet. (less)
-    
+
 Clicking "less" goes back to the truncated text.
 
 There is also [a live example](http://henrik.nyh.se/examples/truncator/) (or try the provided `example.html` locally).
@@ -28,7 +28,7 @@ As shown in the provided `example.html`, just do e.g.
     $(function() {
       $('.example').truncate({max_length: 24});
     });
-    
+
 The selector and options can, of course, be changed.
 
 The available options are:
@@ -37,7 +37,7 @@ The available options are:
  * **`more`**
 
    The text shown inside parentheses after the truncated text.
- 
+
    Defaults to `…more`.
 
 
@@ -51,13 +51,10 @@ The available options are:
  * **`max_length`**
 
    Defaults to `100`.
-   
+
    Note that the ` (…more)` bit counts towards the max length – so a max length of 10 would truncate `1234567890` to `12 (…more)`.
 
-## Customizations in this Fork
 
-Removed extra ")" that is appended to more text. Included link prefix and suffix in max length calculation (before, was only including more text).
-   
 ## Credits and license
 
 By [Henrik Nyh](http://henrik.nyh.se/) under the MIT license:
