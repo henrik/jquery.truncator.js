@@ -14,6 +14,14 @@ Clicking "less" goes back to the truncated text.
 
 There is also [a live example](http://henrik.nyh.se/examples/truncator/) (or try the provided `example.html` locally).
 
+## Not actively maintained!
+
+Please note that I haven't touched or used this script in a long time and thus don't feel inclined to maintain it.
+
+I'm unlikely to accept pull requests or issues, but please do add those to one of the existing forks or make your own.
+
+Sorry!
+
 ## Graceful HTML handling
 
 While there are many JavaScript truncators, this one is unique in handling HTML gracefully. That means you can truncate an element containing paragraphs, links, other markup and HTML entities without strange results.
