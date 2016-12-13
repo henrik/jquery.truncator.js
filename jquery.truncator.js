@@ -24,7 +24,7 @@
 
       truncated_node.insertAfter(full_node);
 
-      findNodeForMore(truncated_node).append(opts.link_prefix+'<a href="#more" class="'+opts.css_more_class+'">'+opts.more+'</a>'+opts.link_suffix);
+      findNodeForMore(truncated_node).append(opts.ellipsis+opts.link_prefix+'<a href="#more" class="'+opts.css_more_class+'">'+opts.more+'</a>'+opts.link_suffix);
       findNodeForLess(full_node).append(opts.link_prefix+'<a href="#less" class="'+opts.css_less_class+'">'+opts.less+'</a>'+opts.link_suffix);
 
       truncated_node.find('a:last').click(function() {
@@ -41,7 +41,8 @@
   // length of 10 would truncate "1234567890" to "12 (…more)".
   $.fn.truncate.defaults = {
     max_length: 100,
-    more: '…more',
+    ellipsis: '…',
+    more: 'more',
     less: 'less',
     css_more_class: 'truncator-link truncator-more',
     css_less_class: 'truncator-link truncator-less',
